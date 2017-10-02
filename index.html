@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hangman</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">	
+
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	
+	<script src="assets/javascript/game.js"></script>
+
+</head>
+<body onload="clickOnce();">
+	<br>
+	<div class="container">
+		<!-- Beginning of Instruction panel -->
+		<div class="panel panel-default">
+			<div class="panel-heading" id="instruction-heading" onclick="displayInstructions();">
+				<h5 id="instruction-heading-text">Instructions ►</h5>
+			</div>
+			<div class="panel-body" id="instruction-div">
+				<p>Greetings Adventurer! In order to prove your might to the king, you must slay all those who oppose the kingdom. Use your magical letter runes against your opponent by pressing any letter on your keyboard. If the enemy is weak against that letter, it will damage them. If you guess the entire word that their weaknesses form, you will defeat them! But if you guess wrong, your attack will backfire and hurt you, so be careful - you only have a certain number of hitpoints before you die.</p>
+			</div>
+		</div>
+		<!-- End of Instruction panel -->
+
+		<div class="row">
+			<div class="col-md-2">
+				<div class="panel panel-default">
+					<div class="panel-body level-div">
+						<p>Choose your level</p>
+						<hr>
+						<img src="assets/images/oie_1231323XlFJgxwX-0.jpg" class="level-image img-thumbnail" id="lava" onclick="changeLevel('lava')">
+						<p class="level-text">lava</p>
+						<hr>
+						<img src="assets/images/oie_1232046CVVs8cUK-0.jpg" class="level-image img-thumbnail" id="woods" onclick="changeLevel('woods')">
+						<p class="level-text">woods</p>
+						<hr>
+						<img src="assets/images/oie_1231323XlFJgxwX-0.jpg" class="level-image img-thumbnail" id="lvl1" onclick="changeLevel('lava')">
+						<p class="level-text">lava</p>
+						<hr>
+						<img src="assets/images/oie_1231323XlFJgxwX-0.jpg" class="level-image img-thumbnail" id="lvl4" onclick="changeLevel('lava')">
+						<p class="level-text">lava</p>
+						<hr>
+						<img src="assets/images/oie_1231323XlFJgxwX-0.jpg" class="level-image img-thumbnail" id="lvl5" onclick="changeLevel('lava')">
+						<p class="level-text">lava</p>
+						<hr>
+						<img src="assets/images/oie_1231323XlFJgxwX-0.jpg" class="level-image img-thumbnail" id="lvl6" onclick="changeLevel('lava')">
+						<p class="level-text">lava</p>
+						<hr>
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+
+
+	</div>
+	
+
+
+</body>
+</html>
