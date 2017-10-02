@@ -1,21 +1,19 @@
 
 var levels = ["lava","woods","sewer","ruins","underpass","castle"];
 var enemies = ["axeman","blob1","blob2","blob3","flyer1","flyer2","goblin1","goblin2","goblin3","skull","spirit","warrior1","warrior2","warrior3","girl"];
+var enemyNames = ["axeman","small blob","blob","large blob","hell bat","bat pig","goblin","goblin","large goblin","flaming skull","evil spirit","warrior","warrior","warrior","crazy girl"];
 var words = ["word","letters","blah","computer","programming"];
+var allLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var currentWord;
+var playerhp = 6;
+var enemyhp;
+var wins = 0;
+var wordArray;
 
 function initialSetup(){
 	var randLevel = levels[Math.floor(Math.random() * levels.length)];
-	var randEnemy = enemies[Math.floor(Math.random() * enemies.length)];
-	var randWord = words[Math.floor(Math.random() * words.length)];
-	var str = "";
 	document.getElementById("level").src = "assets/images/" + randLevel + ".gif";
-	document.getElementById("enemy").src = "assets/images/enemies/" + randEnemy + ".gif";
-
-	for (i = 0; i < randWord.length; i++){
-		str = str + "_";
-	}
-	document.getElementById("hangman-text").textContent = str;
+	newEnemy();
 
 }
 
@@ -53,4 +51,74 @@ function changeLevel(level){
 
 function clickOnce(){
 	document.getElementById("instruction-heading").click();
+}
+
+function newEnemy(){
+	var randEnemy = enemies[Math.floor(Math.random() * enemies.length)];
+	var randWord = words[Math.floor(Math.random() * words.length)];
+	currentWord = randWord;
+	enemyhp = currentWord.length;
+	var str = "";
+	document.getElementById("enemy").src = "assets/images/enemies/" + randEnemy + ".gif";
+
+	for (i = 0; i < currentWord.length; i++){
+		str = str + "_";
+	}
+	document.getElementById("hangman-text").textContent = str;
+	document.getElementById("enemy-hp").textContent = "hp: " + enemyhp.toString();
+	document.getElementById("enemy-text").textContent = "Enemy: " + enemyNames[enemies.indexOf(randEnemy)];
+	wordArray = document.getElementById("hangman-text").textContent.split("");
+
+}
+
+function runLogic(userInput, wordArray){
+	for(i = 0; i < wordArray.length; i++){
+		if(userInput.toString() === currentWord.charAt(i) && userInput !== "enter"){
+			wordArray[i] = userInput.toString();
+			document.getElementById("hangman-text").textContent = wordArray.join("");
+			enemyhp = enemyhp - 1;
+			document.getElementById("enemy-hp").textContent = "hp: " + enemyhp.toString();
+			document.getElementById(userInput).classList.remove("btn-primary");
+			document.getElementById(userInput).classList.add("btn-success");
+		}
+	}
+
+	if(userInput === "enter"){
+		if (enemyhp <= 0){
+		for (i = 0; i < allLetters.length; i++){
+			if(document.getElementById(allLetters[i].toString()).classList.contains("btn-success")){
+				document.getElementById(allLetters[i]).classList.remove("btn-success");
+				document.getElementById(allLetters[i]).classList.add("btn-primary");
+			}
+			else if(document.getElementById(allLetters[i].toString()).classList.contains("btn-danger")){
+				document.getElementById(allLetters[i]).classList.remove("btn-danger");
+				document.getElementById(allLetters[i]).classList.add("btn-primary");
+			}
+		}		
+			newEnemy();
+		}
+	}
+
+
+}
+
+document.onkeyup = function(event){
+	var userInput = event.key.toLowerCase();
+	
+	runLogic(userInput, wordArray);
+	// for(i = 0; i < wordArray.length; i++){
+	// 	if(userInput.toString() === currentWord.charAt(i) && userInput !== "enter"){
+	// 		wordArray[i] = userInput.toString();
+	// 		document.getElementById("hangman-text").textContent = wordArray.join("");
+	// 		enemyhp = enemyhp - 1;
+	// 		document.getElementById("enemy-hp").textContent = "hp: " + enemyhp.toString();
+	// 	}
+	// }
+
+	// if(userInput === "enter"){
+	// 	if (enemyhp <= 0){
+	// 		newEnemy();
+	// 	}
+	// }
+
 }
