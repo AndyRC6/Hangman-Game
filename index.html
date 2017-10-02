@@ -13,7 +13,7 @@
 	<script src="assets/javascript/game.js"></script>
 
 </head>
-<body onload="clickOnce();">
+<body onload="clickOnce(); initialSetup();">
 	<br>
 	<div class="container">
 		<!-- Beginning of Instruction panel -->
@@ -30,32 +30,46 @@
 		<div class="row">
 			<div class="col-md-2">
 				<div class="panel panel-default">
-					<div class="panel-body level-div">
+					<div class="panel-heading">
 						<p>Choose your level</p>
-						<hr>
+					</div>
+					<div class="panel-body level-div">
 						<img src="assets/images/oie_1231323XlFJgxwX-0.jpg" class="level-image img-thumbnail" id="lava" onclick="changeLevel('lava')">
 						<p class="level-text">lava</p>
 						<hr>
 						<img src="assets/images/oie_1232046CVVs8cUK-0.jpg" class="level-image img-thumbnail" id="woods" onclick="changeLevel('woods')">
 						<p class="level-text">woods</p>
 						<hr>
-						<img src="assets/images/oie_1231323XlFJgxwX-0.jpg" class="level-image img-thumbnail" id="lvl1" onclick="changeLevel('lava')">
-						<p class="level-text">lava</p>
+						<img src="assets/images/oie_2191141jNIawZm3-0.jpg" class="level-image img-thumbnail" id="sewer" onclick="changeLevel('sewer')">
+						<p class="level-text">sewer</p>
 						<hr>
-						<img src="assets/images/oie_1231323XlFJgxwX-0.jpg" class="level-image img-thumbnail" id="lvl4" onclick="changeLevel('lava')">
-						<p class="level-text">lava</p>
+						<img src="assets/images/oie_21914279kEVtAOr-0.jpg" class="level-image img-thumbnail" id="ruins" onclick="changeLevel('ruins')">
+						<p class="level-text">ruins</p>
 						<hr>
-						<img src="assets/images/oie_1231323XlFJgxwX-0.jpg" class="level-image img-thumbnail" id="lvl5" onclick="changeLevel('lava')">
-						<p class="level-text">lava</p>
+						<img src="assets/images/oie_2191737dpepl8Xu-0.jpg" class="level-image img-thumbnail" id="underpass" onclick="changeLevel('underpass')">
+						<p class="level-text">underpass</p>
 						<hr>
-						<img src="assets/images/oie_1231323XlFJgxwX-0.jpg" class="level-image img-thumbnail" id="lvl6" onclick="changeLevel('lava')">
-						<p class="level-text">lava</p>
+						<img src="assets/images/oie_21919503dk6Z2JG-0.jpg" class="level-image img-thumbnail" id="castle" onclick="changeLevel('castle')">
+						<p class="level-text">castle</p>
 						<hr>
 					</div>
 				</div>
 			</div>
 
-
+			<div class="col-md-8">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5 id="enemy-text">Enemy: </h5>
+						<h5 id="enemy-hp">hp: </h5>
+					</div>
+					<div class="panel-body" id="main-game">
+						<img class="img-responsive" id="level" src="assets/images/lava.gif">
+						<img class="img-responsive" id="enemy" src="assets/images/enemies/blob1.gif">
+						<br>
+						<p id="hangman-text">_____</p>
+					</div>
+				</div>
+			</div>
 
 		</div>
 

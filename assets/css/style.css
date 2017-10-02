@@ -49,3 +49,17 @@ p{
   background-color: black;
   outline: 1px solid slategrey;
 }
+#enemy{
+	position:absolute;
+	bottom:100px;
+	left:240px;
+}
+#level{
+	filter: brightness(50%);
+}
+#hangman-text{
+	text-align:center;
+	letter-spacing:10px;
+}
+
+
