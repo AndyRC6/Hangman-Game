@@ -74,8 +74,11 @@ p{
 	text-align:center;
 	font-size:14px;
 	color:#006AFB;
-	/*position:relative;*/
-	bottom:200px;
 
+}
+#lose{
+	text-align:center;
+	font-size:14px;
+	color:red;
 }
 

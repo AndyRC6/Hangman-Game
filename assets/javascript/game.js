@@ -77,12 +77,14 @@ function newEnemy(){
 	playerhp = 6;
 	document.getElementById("hp-text").textContent = "My hp: " + playerhp.toString();
 	document.getElementById("congrats").style.display = "none";
+	document.getElementById("enemy").style.display = "unset";
+	document.getElementById("lose").style.display = "none";
 
 }
 
 function runLogic(userInput, wordArray){
 	for(i = 0; i < wordArray.length; i++){
-		if(userInput.toString() === currentWord.charAt(i) && userInput !== "enter"){
+		if(userInput.toString() === currentWord.charAt(i) && userInput !== "enter" && currentWord.charAt(i) !== wordArray[i]){
 			wordArray[i] = userInput.toString();
 			document.getElementById("hangman-text").textContent = wordArray.join("");
 			enemyhp = enemyhp - 1;
@@ -90,7 +92,7 @@ function runLogic(userInput, wordArray){
 			document.getElementById(userInput).classList.remove("btn-primary");
 			document.getElementById(userInput).classList.add("btn-success");
 			wrongLetter = false;
-		}else if(i === wordArray.length - 1 && wrongLetter === true && userInput !== "enter"){
+		}else if(i === wordArray.length - 1 && wrongLetter === true && userInput !== "enter" && !document.getElementById(userInput).classList.contains("btn-success")){
 			document.getElementById(userInput).classList.remove("btn-primary");
 			document.getElementById(userInput).classList.add("btn-danger");
 			playerhp = playerhp - 1;
@@ -99,8 +101,11 @@ function runLogic(userInput, wordArray){
 	}
 	if (enemyhp <= 0){
 		document.getElementById("congrats").style.display = "block";
+		document.getElementById("enemy").style.display = "none";
 	}
-	
+	if(playerhp <= 0){
+		document.getElementById("lose").style.display = "block";
+	}
 
 	if(userInput === "enter"){
 		if (enemyhp <= 0){
@@ -117,6 +122,7 @@ function runLogic(userInput, wordArray){
 			addDeathCount();
 			newEnemy();
 		}
+
 	}
 	wrongLetter = true;
 
