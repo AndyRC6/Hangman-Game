@@ -4,12 +4,14 @@ var enemies = ["axeman","blob1","blob2","blob3","flyer1","flyer2","goblin1","gob
 var enemyNames = ["axeman","small blob","blob","large blob","hell bat","bat pig","goblin","goblin","large goblin","flaming skull","evil spirit","warrior","warrior","warrior","rebel soldier"];
 var words = ["word","letters","blah","computer","programming","carpenter","formula","astronaut","fraud","graceful","balcony","harmony","whales","elephant","powerless","devastation","animal"];
 var allLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var hatArray = [];
 var currentWord;
 var playerhp = 10;
 var enemyhp;
 var wins = 0;
 var wordArray;
 wrongLetter = true;
+var hats = false;
 
 function initialSetup(){
 	var randLevel = levels[Math.floor(Math.random() * levels.length)];
@@ -60,6 +62,7 @@ function addDeathCount(){
 }
 
 function newEnemy(){
+	hatArray = []
 	var randEnemy = enemies[Math.floor(Math.random() * enemies.length)];
 	var randWord = words[Math.floor(Math.random() * words.length)];
 	currentWord = randWord;
@@ -69,7 +72,9 @@ function newEnemy(){
 
 	for (i = 0; i < currentWord.length; i++){
 		str = str + "_";
+		hatArray.push("<img src='assets/images/sombrero.png' id='hat-image' style='visibility:hidden;'>");
 	}
+	document.getElementById("hats").innerHTML = hatArray.join("");
 	document.getElementById("hangman-text").textContent = str;
 	document.getElementById("enemy-hp").textContent = "Enemy hp: " + enemyhp.toString();
 	document.getElementById("enemy-text").textContent = "Enemy: " + enemyNames[enemies.indexOf(randEnemy)];
@@ -86,6 +91,21 @@ function resetButtons(){
 
 }
 
+function addHats(){
+	if(hats === true){
+		hatArray[i] = "<img src='assets/images/sombrero.png' id='hat-image' style='visibility:visible;'>";
+		document.getElementById("hats").innerHTML = hatArray.join("");
+	}
+}
+
+function toggleHats(){
+	if(hats === false){
+		hats = true;
+	}else{
+		hats = false;
+	}
+}
+
 function runLogic(userInput, wordArray){
 	if (playerhp > 0){
 		for(i = 0; i < wordArray.length; i++){
@@ -97,6 +117,7 @@ function runLogic(userInput, wordArray){
 				document.getElementById(userInput).classList.remove("btn-primary");
 				document.getElementById(userInput).classList.add("btn-success");
 				wrongLetter = false;
+				addHats();
 			}else if(i === wordArray.length - 1 && wrongLetter === true && userInput !== "enter" && !document.getElementById(userInput).classList.contains("btn-success") && enemyhp > 0){
 				document.getElementById(userInput).classList.remove("btn-primary");
 				document.getElementById(userInput).classList.add("btn-danger");
@@ -110,6 +131,7 @@ function runLogic(userInput, wordArray){
 		}
 		if(playerhp <= 0){
 			document.getElementById("lose").style.display = "block";
+			document.getElementById("enemy").style.display = "none";
 		}
 
 		if(userInput === "enter"){

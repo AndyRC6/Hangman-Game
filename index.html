@@ -23,6 +23,14 @@
 			</div>
 			<div class="panel-body" id="instruction-div">
 				<p>Greetings Adventurer! In order to prove your might to the king, you must slay all those who oppose the kingdom. Use your magical letter runes against your opponent by pressing any letter on your keyboard. If the enemy is weak against that letter, it will damage them. If you guess the entire word that their weaknesses form, you will defeat them! But if you guess wrong, your attack will backfire and hurt you, so be careful - you only have a certain number of hitpoints before you die.</p>
+				<br>
+				<br>
+				<br>
+				<p>Hats:</p>
+				<div class="onoffswitch">
+    				<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onclick="toggleHats()">
+    				<label class="onoffswitch-label" for="myonoffswitch"></label>
+				</div>
 			</div>
 		</div>
 		<!-- End of Instruction panel -->
@@ -66,6 +74,7 @@
 						<img class="img-responsive" id="level" src="assets/images/lava.gif">
 						<img class="img-responsive" id="enemy" src="assets/images/enemies/blob1.gif">
 						<br>
+						<p id="hats"></p>
 						<p id="hangman-text">_____</p>
 						<p id="congrats">Enemy defeated! Press enter to fight again.</p>
 						<p id="lose">You've been defeated! Press enter to start a new game</p>
@@ -73,6 +82,7 @@
 						<br>
 						<p id="hp-text">My hp: 6</p>
 						<p id="win-count">Enemies defeated: 0</p>
+						
 					</div>
 				</div>
 			</div>
