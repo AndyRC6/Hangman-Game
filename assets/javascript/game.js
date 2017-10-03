@@ -1,7 +1,7 @@
 
 var levels = ["lava","woods","sewer","ruins","underpass","castle"];
 var enemies = ["axeman","blob1","blob2","blob3","flyer1","flyer2","goblin1","goblin2","goblin3","skull","spirit","warrior1","warrior2","warrior3","girl"];
-var enemyNames = ["axeman","small blob","blob","large blob","hell bat","bat pig","goblin","goblin","large goblin","flaming skull","evil spirit","warrior","warrior","warrior","crazy girl"];
+var enemyNames = ["axeman","small blob","blob","large blob","hell bat","bat pig","goblin","goblin","large goblin","flaming skull","evil spirit","warrior","warrior","warrior","rebel soldier"];
 var words = ["word","letters","blah","computer","programming"];
 var allLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var currentWord;
@@ -82,52 +82,71 @@ function newEnemy(){
 
 }
 
-function runLogic(userInput, wordArray){
-	for(i = 0; i < wordArray.length; i++){
-		if(userInput.toString() === currentWord.charAt(i) && userInput !== "enter" && currentWord.charAt(i) !== wordArray[i]){
-			wordArray[i] = userInput.toString();
-			document.getElementById("hangman-text").textContent = wordArray.join("");
-			enemyhp = enemyhp - 1;
-			document.getElementById("enemy-hp").textContent = "hp: " + enemyhp.toString();
-			document.getElementById(userInput).classList.remove("btn-primary");
-			document.getElementById(userInput).classList.add("btn-success");
-			wrongLetter = false;
-		}else if(i === wordArray.length - 1 && wrongLetter === true && userInput !== "enter" && !document.getElementById(userInput).classList.contains("btn-success")){
-			document.getElementById(userInput).classList.remove("btn-primary");
-			document.getElementById(userInput).classList.add("btn-danger");
-			playerhp = playerhp - 1;
-			document.getElementById("hp-text").textContent = "My hp: " + playerhp.toString();
-		}
-	}
-	if (enemyhp <= 0){
-		document.getElementById("congrats").style.display = "block";
-		document.getElementById("enemy").style.display = "none";
-	}
-	if(playerhp <= 0){
-		document.getElementById("lose").style.display = "block";
-	}
-
-	if(userInput === "enter"){
-		if (enemyhp <= 0){
-		for (i = 0; i < allLetters.length; i++){
-			if(document.getElementById(allLetters[i].toString()).classList.contains("btn-success")){
-				document.getElementById(allLetters[i]).classList.remove("btn-success");
-				document.getElementById(allLetters[i]).classList.add("btn-primary");
-			}
-			else if(document.getElementById(allLetters[i].toString()).classList.contains("btn-danger")){
-				document.getElementById(allLetters[i]).classList.remove("btn-danger");
-				document.getElementById(allLetters[i]).classList.add("btn-primary");
-			}
-		}	
-			addDeathCount();
-			newEnemy();
-		}
-
-	}
-	wrongLetter = true;
-
+function resetButtons(){
 
 }
+
+function runLogic(userInput, wordArray){
+	if (playerhp > 0){
+		for(i = 0; i < wordArray.length; i++){
+			if(userInput.toString() === currentWord.charAt(i) && userInput !== "enter" && currentWord.charAt(i) !== wordArray[i]){
+				wordArray[i] = userInput.toString();
+				document.getElementById("hangman-text").textContent = wordArray.join("");
+				enemyhp = enemyhp - 1;
+				document.getElementById("enemy-hp").textContent = "hp: " + enemyhp.toString();
+				document.getElementById(userInput).classList.remove("btn-primary");
+				document.getElementById(userInput).classList.add("btn-success");
+				wrongLetter = false;
+			}else if(i === wordArray.length - 1 && wrongLetter === true && userInput !== "enter" && !document.getElementById(userInput).classList.contains("btn-success") && enemyhp > 0){
+				document.getElementById(userInput).classList.remove("btn-primary");
+				document.getElementById(userInput).classList.add("btn-danger");
+				playerhp = playerhp - 1;
+				document.getElementById("hp-text").textContent = "My hp: " + playerhp.toString();
+			}
+		}
+		if (enemyhp <= 0){
+			document.getElementById("congrats").style.display = "block";
+			document.getElementById("enemy").style.display = "none";
+		}
+		if(playerhp <= 0){
+			document.getElementById("lose").style.display = "block";
+		}
+
+		if(userInput === "enter"){
+			if (enemyhp <= 0){
+			for (i = 0; i < allLetters.length; i++){
+				if(document.getElementById(allLetters[i].toString()).classList.contains("btn-success")){
+					document.getElementById(allLetters[i]).classList.remove("btn-success");
+					document.getElementById(allLetters[i]).classList.add("btn-primary");
+				}
+				else if(document.getElementById(allLetters[i].toString()).classList.contains("btn-danger")){
+					document.getElementById(allLetters[i]).classList.remove("btn-danger");
+					document.getElementById(allLetters[i]).classList.add("btn-primary");
+				}
+			}	
+				addDeathCount();
+				newEnemy();
+			}
+
+		}
+		wrongLetter = true;
+
+		}else if (userInput === "enter"){
+			for (i = 0; i < allLetters.length; i++){
+				if(document.getElementById(allLetters[i].toString()).classList.contains("btn-success")){
+					document.getElementById(allLetters[i]).classList.remove("btn-success");
+					document.getElementById(allLetters[i]).classList.add("btn-primary");
+				}
+				else if(document.getElementById(allLetters[i].toString()).classList.contains("btn-danger")){
+					document.getElementById(allLetters[i]).classList.remove("btn-danger");
+					document.getElementById(allLetters[i]).classList.add("btn-primary");
+				}
+			}			
+			wins = 0;
+			document.getElementById("win-count").textContent = "Enemies defeated: " + wins.toString();
+			initialSetup();
+		}
+	}
 
 document.onkeyup = function(event){
 	var userInput = event.key.toLowerCase();
