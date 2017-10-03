@@ -2,10 +2,10 @@
 var levels = ["lava","woods","sewer","ruins","underpass","castle"];
 var enemies = ["axeman","blob1","blob2","blob3","flyer1","flyer2","goblin1","goblin2","goblin3","skull","spirit","warrior1","warrior2","warrior3","girl"];
 var enemyNames = ["axeman","small blob","blob","large blob","hell bat","bat pig","goblin","goblin","large goblin","flaming skull","evil spirit","warrior","warrior","warrior","rebel soldier"];
-var words = ["word","letters","blah","computer","programming"];
+var words = ["word","letters","blah","computer","programming","carpenter","formula","astronaut","fraud","graceful","balcony","harmony","whales","elephant","powerless","devastation","animal"];
 var allLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var currentWord;
-var playerhp = 6;
+var playerhp = 10;
 var enemyhp;
 var wins = 0;
 var wordArray;
@@ -74,7 +74,7 @@ function newEnemy(){
 	document.getElementById("enemy-hp").textContent = "Enemy hp: " + enemyhp.toString();
 	document.getElementById("enemy-text").textContent = "Enemy: " + enemyNames[enemies.indexOf(randEnemy)];
 	wordArray = document.getElementById("hangman-text").textContent.split("");
-	playerhp = 6;
+	playerhp = 10;
 	document.getElementById("hp-text").textContent = "My hp: " + playerhp.toString();
 	document.getElementById("congrats").style.display = "none";
 	document.getElementById("enemy").style.display = "unset";
