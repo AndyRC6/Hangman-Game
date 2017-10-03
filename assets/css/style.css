@@ -51,7 +51,7 @@ p{
 }
 #enemy{
 	position:absolute;
-	bottom:100px;
+	bottom:200px;
 	left:280px;
 	width:200px;
 }
@@ -66,5 +66,16 @@ p{
 .rune-button{
 	float:left;
 	margin:10px;
+}
+#hp-text{
+	color:green;
+}
+#congrats{
+	text-align:center;
+	font-size:14px;
+	color:#006AFB;
+	/*position:relative;*/
+	bottom:200px;
+
 }
 
