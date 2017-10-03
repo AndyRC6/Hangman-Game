@@ -3,7 +3,7 @@ body{
 	background-image: url("../images/844946240_preview_3288949bd5d35b3bcfa9de0b65faade54bbd701c.jpg");
 	background-size:100%;
 	font-family: 'Press Start 2P', cursive;
-	color:#292f33;
+	color:white;
 }
 p{
 	font-size:10px;
@@ -84,4 +84,19 @@ p{
 }
 #enemy-hp{
 	color:red;
+}
+.panel-body{
+	background-color: #525253;
+}
+.panel{
+	border:none;
+}
+.panel-heading{
+	background-color:#3C3C3D !important;
+	border:none;
+	color:white !important;
+}
+.img-thumbnail{
+	border-color:black !important;
+	background-color:#29292A;
 }
