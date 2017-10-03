@@ -1,6 +1,7 @@
 
 body{
-	background-image: url("../images/tweed_@2X.PNG");
+	background-image: url("../images/844946240_preview_3288949bd5d35b3bcfa9de0b65faade54bbd701c.jpg");
+	background-size:100%;
 	font-family: 'Press Start 2P', cursive;
 	color:#292f33;
 }
@@ -81,4 +82,6 @@ p{
 	font-size:14px;
 	color:red;
 }
-
+#enemy-hp{
+	color:red;
+}
