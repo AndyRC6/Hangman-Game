@@ -65,7 +65,7 @@ function newEnemy(){
 	currentWord = randWord;
 	enemyhp = currentWord.length;
 	var str = "";
-	document.getElementById("enemy").src = "assets/images/enemies/" + randEnemy + ".GIF";
+	document.getElementById("enemy").src = "assets/images/enemies/" + randEnemy + ".gif";
 
 	for (i = 0; i < currentWord.length; i++){
 		str = str + "_";
