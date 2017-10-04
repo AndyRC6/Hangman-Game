@@ -52,7 +52,7 @@ p{
 }
 #enemy{
 	position:absolute;
-	bottom:200px;
+	bottom:230px;
 	left:280px;
 	width:200px;
 }
@@ -69,23 +69,27 @@ p{
 	margin:10px;
 }
 #hp-text{
+	font-size:14px;
 	color:green;
 }
 #congrats{
 	text-align:center;
 	font-size:14px;
-	color:#006AFB;
+	color:#2e6da4;
 	display:none;
 
 }
 #lose{
 	text-align:center;
 	font-size:14px;
-	color:red;
+	color:#ED4337;
 	display:none;
 }
 #enemy-hp{
-	color:red;
+	color:#ED4337;
+}
+#win-count{
+	font-size:14px;
 }
 .panel-body{
 	background-color: #525253;

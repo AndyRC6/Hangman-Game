@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Hangman</title>
-
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">	
 
 	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
@@ -19,10 +19,11 @@
 		<!-- Beginning of Instruction panel -->
 		<div class="panel panel-default">
 			<div class="panel-heading" id="instruction-heading" onclick="displayInstructions();">
-				<h5 id="instruction-heading-text">Instructions ►</h5>
+				<h5 id="instruction-heading-text">Instructions/Settings ►</h5>
 			</div>
 			<div class="panel-body" id="instruction-div">
 				<p>Greetings Adventurer! In order to prove your might to the king, you must slay all those who oppose the kingdom. Use your magical letter runes against your opponent by pressing any letter on your keyboard. If the enemy is weak against that letter, it will damage them. If you guess the entire word that their weaknesses form, you will defeat them! But if you guess wrong, your attack will backfire and hurt you, so be careful - you only have a certain number of hitpoints before you die.</p>
+				<br>
 				<br>
 				<br>
 				<br>
@@ -30,6 +31,11 @@
 				<div class="onoffswitch">
     				<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onclick="toggleHats()">
     				<label class="onoffswitch-label" for="myonoffswitch"></label>
+				</div>
+				<p>Hard mode:</p>
+				<div class="onoffswitch">
+    				<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch2" onclick="toggleHardMode()">
+    				<label class="onoffswitch-label" for="myonoffswitch2"></label>
 				</div>
 			</div>
 		</div>

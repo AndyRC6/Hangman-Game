@@ -1,7 +1,7 @@
 
 var levels = ["lava","woods","sewer","ruins","underpass","castle"];
-var enemies = ["axeman","blob1","blob2","blob3","flyer1","flyer2","goblin1","goblin2","goblin3","skull","spirit","warrior1","warrior2","warrior3","girl"];
-var enemyNames = ["axeman","small blob","blob","large blob","hell bat","bat pig","goblin","goblin","large goblin","flaming skull","evil spirit","warrior","warrior","warrior","rebel soldier"];
+var enemies = ["axeman","blob2","blob3","flyer1","flyer2","goblin1","goblin3","skull","spirit","warrior1","warrior2","warrior3","girl", "summoner"];
+var enemyNames = ["axeman","blob","large blob","hell bat","bat pig","goblin","large goblin","flaming skull","evil spirit","warrior","warrior","warrior","rebel soldier", "summoner"];
 var words = ["word","letters","blah","computer","programming","carpenter","formula","astronaut","fraud","graceful","balcony","harmony","whales","elephant","powerless","devastation","animal"];
 var allLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var hatArray = [];
@@ -12,6 +12,7 @@ var wins = 0;
 var wordArray;
 wrongLetter = true;
 var hats = false;
+var hardMode = false;
 
 function initialSetup(){
 	var randLevel = levels[Math.floor(Math.random() * levels.length)];
@@ -24,10 +25,10 @@ function displayInstructions(){
 
 	if(document.getElementById("instruction-div").style.display == "none"){
 		document.getElementById("instruction-div").style.display = "block";
-		document.getElementById("instruction-heading-text").textContent = "Instructions ▼";
+		document.getElementById("instruction-heading-text").textContent = "Instructions/Settings ▼";
 	}else {
 		document.getElementById("instruction-div").style.display = "none";
-		document.getElementById("instruction-heading-text").textContent = "Instructions ►";
+		document.getElementById("instruction-heading-text").textContent = "Instructions/Settings ►";
 	}
 }
 
@@ -79,7 +80,11 @@ function newEnemy(){
 	document.getElementById("enemy-hp").textContent = "Enemy hp: " + enemyhp.toString();
 	document.getElementById("enemy-text").textContent = "Enemy: " + enemyNames[enemies.indexOf(randEnemy)];
 	wordArray = document.getElementById("hangman-text").textContent.split("");
-	playerhp = 10;
+	if(hardMode === false){
+		playerhp = 10;
+	}else if(hardMode === true && playerhp === 0){
+		playerhp = 10;
+	}
 	document.getElementById("hp-text").textContent = "My hp: " + playerhp.toString();
 	document.getElementById("congrats").style.display = "none";
 	document.getElementById("enemy").style.display = "unset";
@@ -103,6 +108,21 @@ function toggleHats(){
 		hats = true;
 	}else{
 		hats = false;
+	}
+}
+
+function toggleHardMode(){
+	if(hardMode === false){
+		hardMode = true;
+		wins = 0;
+		document.getElementById("win-count").textContent = "Enemies defeated: " + wins.toString();
+		initialSetup();
+	}
+	else{
+		hardMode = false;
+		wins = 0;
+		document.getElementById("win-count").textContent = "Enemies defeated: " + wins.toString();
+		initialSetup();
 	}
 }
 
