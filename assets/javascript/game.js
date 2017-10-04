@@ -59,7 +59,7 @@ function clickOnce(){
 
 function addDeathCount(){
 	wins = wins + 1;
-	document.getElementById("win-count").textContent = "Enemies defeated: " + wins.toString();
+	document.getElementById("win-count").textContent = wins.toString();
 }
 
 function newEnemy(){
@@ -115,13 +115,13 @@ function toggleHardMode(){
 	if(hardMode === false){
 		hardMode = true;
 		wins = 0;
-		document.getElementById("win-count").textContent = "Enemies defeated: " + wins.toString();
+		document.getElementById("win-count").textContent = wins.toString();
 		initialSetup();
 	}
 	else{
 		hardMode = false;
 		wins = 0;
-		document.getElementById("win-count").textContent = "Enemies defeated: " + wins.toString();
+		document.getElementById("win-count").textContent = wins.toString();
 		initialSetup();
 	}
 }
@@ -185,7 +185,7 @@ function runLogic(userInput, wordArray){
 				}
 			}			
 			wins = 0;
-			document.getElementById("win-count").textContent = "Enemies defeated: " + wins.toString();
+			document.getElementById("win-count").textContent = wins.toString();
 			initialSetup();
 		}
 	}

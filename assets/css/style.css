@@ -15,6 +15,7 @@ p{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    font-size: 10px;
 }
 #instruction-heading:hover{
 	cursor:pointer;
@@ -22,6 +23,7 @@ p{
 }
 #instruction-div{
 	display:none;
+	margin:30px;
 }
 .level-text{
 	text-align: center;
@@ -52,7 +54,7 @@ p{
 }
 #enemy{
 	position:absolute;
-	bottom:230px;
+	bottom:370px;
 	left:280px;
 	width:200px;
 }
@@ -71,6 +73,7 @@ p{
 #hp-text{
 	font-size:14px;
 	color:green;
+	text-align:center;
 }
 #congrats{
 	text-align:center;
@@ -89,7 +92,8 @@ p{
 	color:#ED4337;
 }
 #win-count{
-	font-size:14px;
+	font-size:40px;
+	text-align:center;
 }
 .panel-body{
 	background-color: #525253;
@@ -148,4 +152,36 @@ p{
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label:before {
     right: 0px; 
+}
+.brand{
+	text-align:center !important;
+}
+.brand-row{
+	background-color:#3C3C3D;
+}
+.red{
+	color:#ED4337;
+}
+.header-link{
+	color: white;
+	text-decoration: none;
+}
+.header-link:visited{
+	color: white;
+	text-decoration: none;
+}
+.header-link:hover{
+	color: white;
+	text-decoration: none;
+}
+.header-link:active{
+	color: white;
+	text-decoration: none;
+}
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.defeated-text{
+	text-align:center;
 }

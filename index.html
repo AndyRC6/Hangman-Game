@@ -14,16 +14,23 @@
 
 </head>
 <body onload="clickOnce(); initialSetup();">
-	<br>
-	<div class="container">
-		<!-- Beginning of Instruction panel -->
-		<div class="panel panel-default">
-			<div class="panel-heading" id="instruction-heading" onclick="displayInstructions();">
-				<h5 id="instruction-heading-text">Instructions/Settings ►</h5>
+	<div class="row brand-row">
+		<a href="index.html" class="header-link"><h2 class="brand">hangman<span class="red">RPG</span></h2></a>
+		<div class="panel-heading" id="instruction-heading" onclick="displayInstructions();">
+				<h5 id="instruction-heading-text" style="text-align:center">Instructions/Settings ►</h5>
 			</div>
 			<div class="panel-body" id="instruction-div">
-				<p>Greetings Adventurer! In order to prove your might to the king, you must slay all those who oppose the kingdom. Use your magical letter runes against your opponent by pressing any letter on your keyboard. If the enemy is weak against that letter, it will damage them. If you guess the entire word that their weaknesses form, you will defeat them! But if you guess wrong, your attack will backfire and hurt you, so be careful - you only have a certain number of hitpoints before you die.</p>
+				<p>Greetings <span class="red">Adventurer!</span> In order to prove your might to the king, you must slay all those who oppose the kingdom. Use your magical letter runes against your opponent. If the enemy is weak against that letter, it will damage them. If you guess the entire word that their weaknesses form, you will defeat them! But if you guess wrong, your attack will backfire and hurt you, so be careful - you have a limited number of hitpoints before you die.</p>
 				<br>
+				<p><span class="red">controls:</span></p>
+				<p>You can use your letter runes by pressing any letter key on your keyboard, or by clicking the letter runes in the rune tab.</p>
+				<img src="assets/images/if_keyboard_107207.png" class="img-responsive">
+				<p>After you've defeated an enemy, press enter on your keyboard to fight the next opponent. If you manage to get yourself killed, press enter to start a new game.</p>
+				<p>You can change the level by clicking the icons in the "choose your level" panel. This will not affect gameplay in any way.</p>
+				<br>
+				<br>
+				<p><span class="red">Hard mode:</span></p>
+				<p>If you choose to play on hard mode, your hp will not replenish between enemies. Your death is imminent.</p>
 				<br>
 				<br>
 				<br>
@@ -32,15 +39,16 @@
     				<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onclick="toggleHats()">
     				<label class="onoffswitch-label" for="myonoffswitch"></label>
 				</div>
-				<p>Hard mode:</p>
+				<p>Hard mode (will start a new game):</p>
 				<div class="onoffswitch">
     				<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch2" onclick="toggleHardMode()">
     				<label class="onoffswitch-label" for="myonoffswitch2"></label>
 				</div>
 			</div>
 		</div>
-		<!-- End of Instruction panel -->
-
+	</div>
+	<br>
+	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
 				<div class="panel panel-default">
@@ -87,7 +95,11 @@
 						<br>
 						<br>
 						<p id="hp-text">My hp: 6</p>
-						<p id="win-count">Enemies defeated: 0</p>
+						<br>
+						<br>
+						<p class="defeated-text">Enemies Defeated</p>
+						<hr>
+						<p id="win-count">0</p>
 						
 					</div>
 				</div>
