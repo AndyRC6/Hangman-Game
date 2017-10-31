@@ -67,7 +67,7 @@ function newEnemy(){
 	var randEnemy = enemies[Math.floor(Math.random() * enemies.length)];
 	var randWord;
 	$.ajax({
-		url:"http://setgetgo.com/randomword/get.php",
+		url:"https://setgetgo.com/randomword/get.php",
 		method:"GET"
 	}).done(function(result){
 		randWord = result;
