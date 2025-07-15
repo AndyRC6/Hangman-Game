@@ -13,6 +13,7 @@ var wordArray;
 wrongLetter = true;
 var hats = false;
 var hardMode = false;
+var randWord;
 
 function initialSetup(){
 	var randLevel = levels[Math.floor(Math.random() * levels.length)];
@@ -65,12 +66,15 @@ function addDeathCount(){
 function newEnemy(){
 	hatArray = []
 	var randEnemy = enemies[Math.floor(Math.random() * enemies.length)];
-	var randWord;
+	var randWordLength = Math.floor(Math.random() * 5);
+
+	
 	$.ajax({
-		url:"https://setgetgo.com/randomword/get.php",
+		url:"https://random-word-api.herokuapp.com/word?length=" + randWordLength.toString(),
 		method:"GET"
 	}).done(function(result){
-		randWord = result;
+		console.log(result);
+		randWord = result[0];
 		currentWord = randWord;
 		enemyhp = currentWord.length;
 		var str = "";
@@ -158,6 +162,7 @@ function runLogic(userInput, wordArray){
 		}
 		if(playerhp <= 0){
 			document.getElementById("lose").style.display = "block";
+			document.getElementById("lose").textContent = "You've been defeated! The word was " + randWord + ", Press enter to start a new game";
 			document.getElementById("enemy").style.display = "none";
 		}
 
