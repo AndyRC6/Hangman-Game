@@ -4,6 +4,7 @@ var enemies = ["axeman","blob2","blob3","flyer1","flyer2","goblin1","goblin3","s
 var enemyNames = ["axeman","blob","large blob","hell bat","bat pig","goblin","large goblin","flaming skull","evil spirit","warrior","warrior","warrior","rebel soldier", "summoner"];
 // var words = ["word","letters","blah","computer","programming","carpenter","formula","astronaut","fraud","graceful","balcony","harmony","whales","elephant","powerless","devastation","animal"];
 var allLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var backUpWords = ["leg", "month", "scary", "mix", "dairy", "computer", "smile", "strong", "do", "floor", "spoon", "canine", "brother", "children", "house", "rocket", "master", "code", "tired", "sled"]
 var hatArray = [];
 var currentWord;
 var playerhp = 10;
@@ -14,6 +15,16 @@ wrongLetter = true;
 var hats = false;
 var hardMode = false;
 var randWord;
+
+$.ajax({
+	url:"https://random-word-api.herokuapp.com/word?number=100",
+	method:"GET"
+}).done(function(result){
+	if(result.length > 0){
+		console.log(result)
+		backUpWords = result;
+	}
+});
 
 function initialSetup(){
 	var randLevel = levels[Math.floor(Math.random() * levels.length)];
@@ -66,15 +77,19 @@ function addDeathCount(){
 function newEnemy(){
 	hatArray = []
 	var randEnemy = enemies[Math.floor(Math.random() * enemies.length)];
-	var randWordLength = Math.floor(Math.random() * 5);
+	// var randWordLength = Math.floor(Math.random() * 5);
 
 	
-	$.ajax({
-		url:"https://random-word-api.herokuapp.com/word?length=" + randWordLength.toString(),
-		method:"GET"
-	}).done(function(result){
-		console.log(result);
-		randWord = result[0];
+	// $.ajax({
+	// 	url:"https://random-word-api.herokuapp.com/word?length=" + randWordLength.toString(),
+	// 	method:"GET"
+	// }).done(function(result){
+		randWord = backUpWords[Math.floor(Math.random() * backUpWords.length)]
+
+		// if(!randWord){ //if api fails, use back up words.
+		// 	randWord = backUpWords[Math.floor(Math.random() * backUpWords.length)]
+		// }
+
 		currentWord = randWord;
 		enemyhp = currentWord.length;
 		var str = "";
@@ -98,7 +113,7 @@ function newEnemy(){
 		document.getElementById("congrats").style.display = "none";
 		document.getElementById("enemy").style.display = "unset";
 		document.getElementById("lose").style.display = "none";
-	});
+	// });
 
 
 }
@@ -162,7 +177,7 @@ function runLogic(userInput, wordArray){
 		}
 		if(playerhp <= 0){
 			document.getElementById("lose").style.display = "block";
-			document.getElementById("lose").textContent = "You've been defeated! The word was " + randWord + ", Press enter to start a new game";
+			document.getElementById("lose").textContent = "You've been defeated! The word was " + currentWord + ", Press enter to start a new game";
 			document.getElementById("enemy").style.display = "none";
 		}
 
